@@ -1,0 +1,1 @@
+export const navLists = ["Why RaptorX.ai", "Solutions", "Industries", "Resources"];
