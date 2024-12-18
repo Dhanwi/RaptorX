@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import {
+  herotext1,
+  herotext2,
+  PersonalizedText,
+  words4,
+} from "../../constants/Constants";
+import { TextGenerateEffect } from "../ui/text-generate-effect";
+import { gsap } from "gsap";
+import ButtonAnim from "../Animation/ButtonAnim";
 
 const Personalized = () => {
+  const infoRef = useRef();
+  const infotl = gsap.timeline();
+
+  useEffect(() => {
+    infotl
+      .from(infoRef.current, {
+        opacity: 0,
+        delay: 0.5,
+        duration: 1,
+      })
+      .to(infoRef.current, {
+        opacity: 1,
+        duration: 3,
+        yoyo: true,
+        repeat: -1,
+      });
+  });
   return (
     <>
       <div
@@ -13,20 +40,24 @@ const Personalized = () => {
           style={{ maxWidth: "90rem" }}
         >
           <div className="wallet-info" style={{ maxWidth: "31rem" }}>
-            <div id="personalized-solution">PERSONALIZED SOLUTION</div>
-            <div id="adjust-text" className="text-3xl">
-              Adjust your approach to match what works best for you.
+            <div>
+              <TypewriterEffectSmooth words={words4} />
             </div>
-            <div className="fraud-handling-info">
+
+            <div id="adjust-text" className="text-3xl">
+              {/* Adjust your approach to match what works best for you. */}
+              <TextGenerateEffect words={PersonalizedText} />
+            </div>
+            <div ref={infoRef} className="fraud-handling-info">
               Have a special way you want to use our technology? If you have
               specific needs we haven&apos;t covered, just tell us. We&apos;re
               flexible and can adapt our solutions to suit exactly what your
               business requires.
             </div>
             <a href="#formData">
-              <button className="btnColor rounded-md flex items-start px-6 py-2 justify-start gap-4 mt-0 border-none text-white">
-                Get started Now
-              </button>
+              <div className="btnColor rounded-md flex items-center px-6 py-2 justify-center gap-4 mt-0 cursor-pointer border-none hover:shadow-md hover:shadow-white text-white">
+                <ButtonAnim text1={herotext1} text2={herotext2} />
+              </div>
             </a>
           </div>
           <div

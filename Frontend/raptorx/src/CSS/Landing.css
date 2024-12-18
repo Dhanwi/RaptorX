@@ -6,9 +6,20 @@
   align-items: center;
   margin-top: 5rem;
 }
+/* Ensure parent container allows absolute positioning of child elements */
+/* buttonAnim component */
+button {
+  position: relative;
+  overflow: hidden;
+}
 
 .btnColor {
   background-image: linear-gradient(to right, #16ee9d, #08a0f3);
+}
+/* Handle hover styles */
+.btnColor:hover {
+  /* background: transparent; */
+  cursor: pointer;
 }
 
 .content-container {
@@ -126,7 +137,7 @@
   max-width: 50.4375rem;
 }
 
-#offers {
+.offers {
   color: var(--Accent, #35adf4);
   text-align: center;
   font-family: Gilroy-Medium;
@@ -141,8 +152,8 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  max-width: 40rem;
+  /* gap: 1rem; */
+  /* max-width: 40rem; */
 }
 
 #full_confidence_and_security__no_matter_what_comes_your_way_ {
@@ -162,7 +173,7 @@
   width: 100%;
   max-width: 76rem;
   flex-wrap: wrap;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   align-items: center;
 }
 
@@ -194,6 +205,14 @@
   font-weight: 400;
   line-height: normal;
 }
+.safeGuard-transaction-title {
+  color: var(--White, #fff);
+  font-family: Gilroy-SemiBold;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 .fraud-handling-info {
   color: rgba(255, 255, 255, 0.7);
@@ -205,9 +224,9 @@
 }
 
 .trust-safety-info {
-  color: var(--Accent, #35adf4);
+  color: var(--Accent, #3da2dc);
   font-family: Gilroy-SemiBold;
-  font-size: 1;
+  font-size: 0.95rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.375rem;
@@ -224,7 +243,7 @@
   max-width: 70%;
 }
 
-#personalized-solution {
+.personalized-solution {
   color: var(--Accent, #35adf4);
   font-family: Gilroy-Medium;
   font-size: 1.125rem;
@@ -318,7 +337,7 @@ a {
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
+  /* margin-top: 2.5rem; */
 }
 
 .system-flow-image-wrapper img {
@@ -331,6 +350,11 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-family: Gilroy-Medium;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem;
   gap: 0.5rem;
   max-width: 23rem;
 }

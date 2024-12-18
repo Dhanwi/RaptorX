@@ -1,23 +1,52 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { WhyChooseRaptorxText, words5 } from "../../constants/Constants";
+import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import { TextGenerateEffect } from "../ui/text-generate-effect";
+import { gsap } from "gsap";
 
 const WhyChooseRaptorX = () => {
+  const infoRef = useRef();
+  const infotl = gsap.timeline();
+
+  useEffect(() => {
+    infotl
+      .from(infoRef.current, {
+        opacity: 0,
+        delay: 0.5,
+        duration: 1,
+      })
+      .to(infoRef.current, {
+        opacity: 1,
+        duration: 3,
+        yoyo: true,
+        repeat: -1,
+      });
+  });
   return (
     <>
       <div
         className="content-container px-4 lg:px-6"
-        style={{ paddingTop: "5rem" }}
+        style={{ paddingTop: "2rem" }}
       >
         <img
-          src="background-image-3.svg"
-          className="/images/background-image-3"
+          src="/images/background-image-3.svg"
+          className="background-image-3"
           style={{ top: "210rem" }}
         ></img>
         <div id="_bg__frame_67">
-          <div id="offers">WHY CHOOSE RAPTORX</div>
-          <div className="text-white text-center font-semibold text-3xl  max-w-[34rem]">
-            Explore RaptorX: Where Unparalleled Features Set a New Standard.
+          <div className="offers">
+            <TypewriterEffectSmooth words={words5} />
           </div>
-          <div className="text-white text-opacity-70 font-normal text-sm  line-height-5 max-w-[32rem] text-center">
+          <div
+            id="adjust-text"
+            className="text-white text-center font-semibold text-3xl  max-w-[34rem]"
+          >
+            <TextGenerateEffect words={WhyChooseRaptorxText} />
+          </div>
+          <div
+            ref={infoRef}
+            className="text-white text-opacity-70 font-normal text-sm  line-height-5 max-w-[32rem] text-center"
+          >
             At RaptorX, we don&apos;t fit into conventional molds; we challenge
             them. Comparing us to others would be like comparing a revolution to
             the status quo. Let&apos;s venture into what makes RaptorX truly

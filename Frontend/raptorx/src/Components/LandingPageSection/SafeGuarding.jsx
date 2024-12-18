@@ -1,24 +1,24 @@
+"use client";
 import React, { useRef } from "react";
+
+// import { cn } from "../../lib/utils";
 import Object1Anim from "../Animation/Object1Anim";
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { CardStack } from "../ui/card-stack";
+import {
+  CARDS,
+  CARDS2,
+  SafeguardingText,
+  words2,
+  words3,
+} from "../../constants/Constants";
+import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 const SafeGuarding = () => {
   const SafeGuardingRef = useRef();
 
-  useGSAP(() => {
-    gsap.to(SafeGuardingRef.current, {
-      scrollTrigger: {
-        trigger: "#adjust-text",
-        start: "top center",
-        end: "bottom center",
-        scrub: 1,
-      },
-      y: -100,
-      duration: 5,
-      delay: 0.5,
-    });
-  });
   return (
     <>
       <div className="content-container pb-20 px-4 lg:px-6">
@@ -32,8 +32,7 @@ const SafeGuarding = () => {
             id="adjust-text"
             className="text-3xl text-center"
           >
-            Safeguarding Trust, Defining Security: Your Partner in Fraud
-            Prevention Excellence
+            <TextGenerateEffect words={SafeguardingText} />
           </div>
           <div className="text-center font-Gilroy-SemiBold text-2xl font-normal leading-normal max-w-34rem text-white flex md:hidden">
             Full confidence and security, no matter what comes your way.
@@ -47,19 +46,10 @@ const SafeGuarding = () => {
           <div className="wallet-info">
             <div className="transaction-title">
               <img src="/icons/wallet-icon.svg"></img>
-              <h1>TRANSACTION FORTIFICATION</h1>
+              <TypewriterEffectSmooth words={words2} />
             </div>
             <div className="fraud-handling-info">
-              Enhance your transactional prowess with RaptorX&apos;s robust
-              solutions. From deterring criminal fraud to streamlining
-              chargeback management, countering friendly fraud, and bolstering
-              revenue recovery – all accessible through our user-friendly
-              platform. Boost authorized transactions and minimize false
-              positives, ensuring a secure and efficient transaction experience.
-            </div>
-            <div className="trust-safety-info">
-              Learn more about trust and safety in payments
-              <img src="/icons/arrow-icon.svg"></img>
+              <CardStack items={CARDS} />
             </div>
           </div>
         </div>
@@ -67,18 +57,10 @@ const SafeGuarding = () => {
           <div className="wallet-info lg:order-first">
             <div className="transaction-title">
               <img src="/icons/profile-icon.svg"></img>
-              <h1>PRECISE USER PROFILING</h1>
+              <TypewriterEffectSmooth words={words3} />
             </div>
             <div className="fraud-handling-info">
-              Harness extensive data-driven profiles with RaptorX, unveiling
-              valuable insights such as spending likelihood, purchase patterns,
-              and payment history. Pinpoint your ideal audience and engage them
-              at the opportune juncture, delivering a secure and delightful
-              experience that strengthens your brand connection.
-            </div>
-            <div className="trust-safety-info">
-              Learn more about customer identity data
-              <img src="/icons/arrow-icon.svg"></img>
+              <CardStack items={CARDS2} />
             </div>
           </div>
           <div className="authorized-section order-first lg:order-last">

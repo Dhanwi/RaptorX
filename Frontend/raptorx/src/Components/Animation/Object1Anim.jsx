@@ -5,13 +5,6 @@
 
 // const Object1Anim = () => {
 //   const [isActive, setIsActive] = useState(false);
-//   // const svgRef = useRef();
-//   // useGSAP(() => {
-//   //   gsap.to(svgRef.current, {
-//   //     repeat: -1,
-//   //     repeatDelay: 0.5,
-//   //   });
-//   // });
 
 //   useEffect(() => {
 //     // Trigger the animation after the component is mounted
@@ -27,12 +20,12 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../../CSS/Object1Animation.css";
+import "../../CSS/svgAnim/Object1Animation.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Object1Anim = () => {
-  const svgRef = useRef(); // Reference to the SVG element
+  const svgRef = useRef(null);
 
   useEffect(() => {
     const svgElement = svgRef.current;
@@ -42,20 +35,35 @@ const Object1Anim = () => {
         trigger: svgElement,
         start: "top 80%", // Trigger when the SVG is near the viewport
         end: "bottom 20%", // Optional, defines where the ScrollTrigger stops monitoring
-        toggleActions: "restart none none none", // Restart the animation on enter
+        toggleActions: "restart pause resume pause", // Restart the animation on enter, pause on leave
         onEnter: () => {
           console.log("SVG entered viewport");
           svgElement.classList.remove("active");
           void svgElement.offsetWidth; // Force reflow
           svgElement.classList.add("active");
         },
-        markers: true, // Debugging markers
+        onLeave: () => {
+          console.log("SVG left viewport");
+          svgElement.classList.remove("active");
+        },
+        onEnterBack: () => {
+          console.log("SVG entered viewport from back");
+          svgElement.classList.remove("active");
+          void svgElement.offsetWidth; // Force reflow
+          svgElement.classList.add("active");
+        },
+        onLeaveBack: () => {
+          console.log("SVG left viewport from back");
+          svgElement.classList.remove("active");
+        },
+        // markers: true, // Debugging markers
       });
     }
 
     // Cleanup ScrollTrigger instances on unmount
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
+
   return (
     <div>
       <svg
