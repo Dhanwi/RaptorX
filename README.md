@@ -66,4 +66,4 @@ This project is a revamped and enhanced version of the original RaptorX.ai websi
 
 1. Clone the repository:
    ```bash
-   
+   git clone https://github.com/Dhanwi/RaptorX.git
