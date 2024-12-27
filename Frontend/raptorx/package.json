@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@radix-ui/react-label": "^2.1.1",
+    "@tabler/icons-react": "^3.26.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.14.1",
+    "framer-motion": "^11.15.0",
+    "mini-svg-data-uri": "^1.4.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-inlinesvg": "^4.1.5",

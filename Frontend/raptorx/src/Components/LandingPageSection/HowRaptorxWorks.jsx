@@ -6,6 +6,7 @@ import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import { HowRaptorxWorksText, words6 } from "../../constants/Constants";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { LampContainer } from "../ui/lamp";
+import GroupAnim from "../Animation/GroupAnim";
 
 const HowRaptorxWorks = () => {
   return (
@@ -35,6 +36,7 @@ const HowRaptorxWorks = () => {
         </LampContainer>
         <div className="system-flow-image-wrapper">
           <img src="/images/Group_4550.svg"></img>
+          {/* <GroupAnim />/ */}
         </div>
       </div>
     </>

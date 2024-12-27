@@ -26,6 +26,26 @@ const UseCases = () => {
         yoyo: true,
         repeat: -1,
       });
+    // infotl.kill
+    () => {
+      const handleScroll = () => {
+        const rect = infoRef.current.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          if (!infotl.isActive()) {
+            infotl.play();
+          }
+        } else {
+          infotl.pause();
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        infotl.kill();
+      };
+    };
   });
   return (
     <>
@@ -33,7 +53,7 @@ const UseCases = () => {
         className="content-container background-image-graphic px-1 md:px-4 lg:px-6 relative"
         style={{ backgroundColor: "#0F141D" }}
       >
-        <div className="transaction-image-wrapper justify-content-between z-10 relative">
+        <div className="transaction-image-wrapper justify-between z-10 relative">
           <div className="wallet-info">
             <div>
               <TypewriterEffectSmooth words={words7} />
@@ -52,64 +72,6 @@ const UseCases = () => {
         </div>
         <div className="child-wrapper mt-6 px-4">
           <div className="transaction-parent-wrapper rounded-md flex flex-col antialiased  dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-            {/* <div className="transaction-wrapper">
-              <div className="transaction-title">
-                <img src="/icons/1-icon.svg"></img>
-                <h1>Customer Insight Amplification</h1>
-              </div>
-              <div className="fraud-handling-info">
-                Harness the power of RAPTORX&lsquo;s technology to gain deeper
-                insights into customer preferences and perceptions.
-              </div>
-            </div>
-            <div className="transaction-wrapper">
-              <div className="transaction-title">
-                <img src="/icons/2-icon.svg"></img>
-                <h1>Continuous Identity Verification</h1>
-              </div>
-              <div className="fraud-handling-info">
-                Elevate your authentication process with continuous identity
-                profiling at every stage, differentiating reliable customers.
-              </div>
-            </div>
-            <div className="transaction-wrapper">
-              <div className="transaction-title">
-                <img src="/icons/3-icon.svg"></img>
-                <h1>Vigilant Fraud Prevention</h1>
-              </div>
-              <div className="fraud-handling-info">
-                Stay one step ahead of fraudsters by employing cutting-edge
-                fraud detection methods that swiftly identify and thwart
-                suspicious activities.
-              </div>
-            </div>
-          </div>
-          <div
-            className="transaction-parent-wrapper d-flex justify-content-around flex-wrap align-items-center"
-            style={{ width: "100%", marginTop: "2rem" }}
-          >
-            <div className="transaction-wrapper">
-              <div className="transaction-title">
-                <img src="/icons/4-icon.svg"></img>
-                <h1>Dispute Resolution Assurance</h1>
-              </div>
-              <div className="fraud-handling-info">
-                Safeguard your transactions with RAPTORX&apos;s built-in
-                explainable AI solution, against chargebacks, ensuring fair and
-                efficient dispute resolution.
-              </div>
-            </div>
-            <div className="transaction-wrapper">
-              <div className="transaction-title">
-                <img src="/icons/5-icon.svg"></img>
-                <h1>Regulatory Compliance Mastery</h1>
-              </div>
-              <div className="fraud-handling-info">
-                Navigate industry regulations effortlessly with RAPTORX&apos;s
-                solution allowing you to operate with confidence.
-              </div>
-            </div>
-          </div> */}
             <InfiniteMovingCards
               items={testimonials}
               // direction="right"

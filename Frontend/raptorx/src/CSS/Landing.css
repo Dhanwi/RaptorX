@@ -28,7 +28,7 @@ button {
   justify-content: center;
   background: var(--background-colors-dark-background-background-dark, #020811);
   align-items: center;
-  padding-top: 3.5rem;
+  /* padding-top: 3.5rem; */
 }
 
 .mac-image-wrapper {
@@ -60,9 +60,9 @@ button {
   max-width: 100%;
 }
 
-.transaction-image-wrapper {
+/* .transaction-image-wrapper {
   display: flex;
-}
+} */
 
 .background-image-3 {
   position: absolute;
@@ -173,7 +173,7 @@ button {
   width: 100%;
   max-width: 76rem;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
+  /* margin-top: 1rem; */
   align-items: center;
 }
 
@@ -360,6 +360,7 @@ a {
 }
 
 .user-form {
+  font-family: Gilroy-Medium;;
   position: relative;
   border-radius: 0.75rem;
   background: #0f141d;
@@ -381,7 +382,7 @@ a {
 
 .user-form h1 {
   color: #fff;
-  /* font-family: Gilroy-SemiBold; */
+  font-family: Gilroy-SemiBold;
   font-size: 1.375rem;
   font-style: normal;
   font-weight: 400;
@@ -408,7 +409,7 @@ a {
 
 .info {
   color: #5d5d5d;
-  /* font-family: Gilroy-Medium; */
+  font-family: Gilroy-Medium;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -458,6 +459,22 @@ a {
   gap: 0rem;
 }
 
+
+.footer-description {
+  font-family: Gilroy-Medium;
+}
+#footer-base {
+  background: var(--Background-Colors-Dark-Background-3rd-Background, #1B2129);
+}
+
+.col-auto a {
+  text-decoration: none;
+  color: #ffffffb2;
+}
+
+.col-auto a:hover {
+  color: #35adf4;
+}
 /* .background-image-5 {
     max-width: 100%;
     position: relative;

@@ -26,7 +26,7 @@ const Hero = () => {
         y: 0,
         opacity: 1,
         duration: 5,
-        delay: 0.5,
+        delay: 0.3,
         // yoyo: true,
         // repeat: -1,
       });
@@ -42,7 +42,7 @@ const Hero = () => {
         x: 0,
         opacity: 1,
         duration: 8,
-        delay: 0.5,
+        delay: 0,
       });
     para2tl
       .from(par2Ref.current, {
@@ -55,23 +55,40 @@ const Hero = () => {
         x: 0,
         opacity: 1,
         duration: 8,
-        delay: 0.5,
       });
+    const handleScroll = () => {
+      const heroRect = HeroRef.current.getBoundingClientRect();
+      const par1Rect = par1Ref.current.getBoundingClientRect();
+      const par2Rect = par2Ref.current.getBoundingClientRect();
+
+      if (
+        heroRect.bottom < 0 ||
+        heroRect.top > window.innerHeight ||
+        par1Rect.bottom < 0 ||
+        par1Rect.top > window.innerHeight ||
+        par2Rect.bottom < 0 ||
+        par2Rect.top > window.innerHeight
+      ) {
+        herotl.kill();
+        para1tl.kill();
+        para2tl.kill();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   });
 
   return (
     <>
-      <div className=" relative w-full rounded-md   flex flex-col items-center justify-center antialiased">
-        <div
-          className="grid grid-cols-1 lg:grid-cols-2 lg:mt-20 items-center justify-center"
-          // style={{
-          //   backgroundImage: "url('/icons/Vector.1fcfc2e8b24a40f47ff1.png')",
-          //   backgroundColor: "#020811",
-          // }}
-        >
+      <div className=" relative w-full rounded-md flex flex-col items-center justify-center antialiased">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:mt-20 items-center justify-center">
           <img
             src="/images/background-image-2.svg"
-            className=" absolute flex-shrink-0"
+            className=" absolute flex-shrink-0 h-[100vh]"
           ></img>
           <div
             className="wallet-info flex items-start  align-middle justify-center px-[5px] md:px-4 lg:px-6 xl:pl-20 mt-10 z-[1]"
@@ -110,7 +127,7 @@ const Hero = () => {
           <div className="mac-image-wrapper z-[1] mt-0">
             <img
               src="/images/mac-image-lg.svg"
-              className=" hidden lg:-mr-16 lg:block"
+              className=" hidden lg:-mr-16 lg:block h-[50vh]"
             ></img>
             <img src="/images/mac-image.svg" className=" lg:hidden"></img>
           </div>

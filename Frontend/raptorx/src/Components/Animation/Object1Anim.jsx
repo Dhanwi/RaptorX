@@ -37,23 +37,23 @@ const Object1Anim = () => {
         end: "bottom 20%", // Optional, defines where the ScrollTrigger stops monitoring
         toggleActions: "restart pause resume pause", // Restart the animation on enter, pause on leave
         onEnter: () => {
-          console.log("SVG entered viewport");
+          // console.log("SVG entered viewport");
           svgElement.classList.remove("active");
           void svgElement.offsetWidth; // Force reflow
           svgElement.classList.add("active");
         },
         onLeave: () => {
-          console.log("SVG left viewport");
+          // console.log("SVG left viewport");
           svgElement.classList.remove("active");
         },
         onEnterBack: () => {
-          console.log("SVG entered viewport from back");
+          // console.log("SVG entered viewport from back");
           svgElement.classList.remove("active");
           void svgElement.offsetWidth; // Force reflow
           svgElement.classList.add("active");
         },
         onLeaveBack: () => {
-          console.log("SVG left viewport from back");
+          // console.log("SVG left viewport from back");
           svgElement.classList.remove("active");
         },
         // markers: true, // Debugging markers

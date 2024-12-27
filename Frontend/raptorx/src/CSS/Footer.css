@@ -1,0 +1,8 @@
+.col-auto a {
+  text-decoration: none;
+  color: #ffffffb2;
+}
+
+.col-auto a:hover {
+  color: #35adf4;
+}

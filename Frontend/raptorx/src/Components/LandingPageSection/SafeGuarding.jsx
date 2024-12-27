@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+// import React, { useRef } from "react";
 
 // import { cn } from "../../lib/utils";
 import Object1Anim from "../Animation/Object1Anim";
@@ -17,24 +17,27 @@ import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 const SafeGuarding = () => {
-  const SafeGuardingRef = useRef();
+  // const SafeGuardingRef = useRef();
 
   return (
     <>
-      <div className="content-container pb-20 px-4 lg:px-6">
+      <div className="content-container pb-20 px-4 pt-5 lg:px-6">
         <img
           className="background-image-3"
           src="/images/background-image-3.svg"
         ></img>
         <div id="_bg__frame_67">
           <div
-            ref={SafeGuardingRef}
+            // ref={SafeGuardingRef}
             id="adjust-text"
-            className="text-3xl text-center"
+            className="text-3xl flex text-center w-3/4 mb-3"
           >
             <TextGenerateEffect words={SafeguardingText} />
           </div>
-          <div className="text-center font-Gilroy-SemiBold text-2xl font-normal leading-normal max-w-34rem text-white flex md:hidden">
+          <div
+            id="adjust-text"
+            className="text-center text-lg font-normal leading-normal max-w-34rem md:hidden text-white flex"
+          >
             Full confidence and security, no matter what comes your way.
           </div>
         </div>
@@ -44,9 +47,11 @@ const SafeGuarding = () => {
             <Object1Anim />
           </div>
           <div className="wallet-info">
-            <div className="transaction-title">
+            <div className="transaction-title flex items-center">
               <img src="/icons/wallet-icon.svg"></img>
-              <TypewriterEffectSmooth words={words2} />
+              <div className="flex align-middle justify-center place-content-center">
+                <TypewriterEffectSmooth words={words2} />
+              </div>
             </div>
             <div className="fraud-handling-info">
               <CardStack items={CARDS} />
@@ -55,9 +60,11 @@ const SafeGuarding = () => {
         </div>
         <div className="transaction-image-wrapper">
           <div className="wallet-info lg:order-first">
-            <div className="transaction-title">
+            <div className="transaction-title flex items-center place-content-center justify-center align-middle">
               <img src="/icons/profile-icon.svg"></img>
-              <TypewriterEffectSmooth words={words3} />
+              <div className=" flex align-middle justify-center place-content-center">
+                <TypewriterEffectSmooth words={words3} />
+              </div>
             </div>
             <div className="fraud-handling-info">
               <CardStack items={CARDS2} />

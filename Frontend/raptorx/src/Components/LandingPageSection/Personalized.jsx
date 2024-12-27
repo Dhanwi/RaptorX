@@ -12,7 +12,9 @@ import ButtonAnim from "../Animation/ButtonAnim";
 
 const Personalized = () => {
   const infoRef = useRef();
+  const imgRef = useRef();
   const infotl = gsap.timeline();
+  const imgtl = gsap.timeline();
 
   useEffect(() => {
     infotl
@@ -27,11 +29,46 @@ const Personalized = () => {
         yoyo: true,
         repeat: -1,
       });
+
+    imgtl
+      .from(imgRef.current, {
+        opacity: 0,
+        delay: 0.5,
+        duration: 1,
+        x: -20,
+      })
+      .to(imgRef.current, {
+        opacity: 1,
+        duration: 4,
+        x: -60,
+        yoyo: true,
+        repeat: -1,
+      });
+    // infotl.kill
+    () => {
+      const handleScroll = () => {
+        const rect = infoRef.current.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          if (!infotl.isActive()) {
+            infotl.play();
+          }
+        } else {
+          infotl.pause();
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        infotl.kill();
+      };
+    };
   });
   return (
     <>
       <div
-        className="background-image-graphic d-flex justify-content-end pl-4 lg:pl-6"
+        className="background-image-graphic flex justify-end pl-4 lg:pl-6"
         id="dashboard-container"
         style={{ backgroundColor: "#0F141D", width: "100%" }}
       >
@@ -45,7 +82,6 @@ const Personalized = () => {
             </div>
 
             <div id="adjust-text" className="text-3xl">
-              {/* Adjust your approach to match what works best for you. */}
               <TextGenerateEffect words={PersonalizedText} />
             </div>
             <div ref={infoRef} className="fraud-handling-info">
@@ -64,7 +100,11 @@ const Personalized = () => {
             className="flex w-11/12 md:w-[47rem] justify-center md:justify-end"
             id="dashboard-image-wrapper"
           >
-            <img id="dashboard-image" src="/images/Dashboard_image2.svg"></img>
+            <img
+              ref={imgRef}
+              id="dashboard-image"
+              src="/images/Dashboard_image2.svg"
+            ></img>
           </div>
         </div>
       </div>
