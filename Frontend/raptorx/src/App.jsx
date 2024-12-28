@@ -6,6 +6,8 @@ import Navbar from "./Components/Navbar";
 import { Signup } from "./Components/Authentication/Signup";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
+import FilterPage from "./Components/Filter/FilterPage";
+import ItemPage from "./Components/Filter/ItemPage";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/solution" element={<FilterPage />} />
+          <Route path="/item/:id" element={<ItemPage />} />
         </Routes>
         <Footer />
       </Router>

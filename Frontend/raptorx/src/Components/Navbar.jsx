@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import { navLists } from "../constants/Constants";
 import { Signup } from "./Authentication/Signup";
 import "../CSS/Navbar.css";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleNavigation = (nav) => {
+    if (nav === "Solutions") {
+      navigate("/solution");
+    } else {
+      // Add navigation logic for other items as needed
+      // console.log(`Navigate to ${nav}`);
+    }
+  };
 
   return (
     <>
@@ -28,6 +39,7 @@ const Navbar = () => {
               {navLists.map((nav, key) => (
                 <div
                   key={key}
+                  onClick={() => handleNavigation(nav)}
                   className="text-base hover:text-[#036cdb] cursor-pointer place-content-center"
                 >
                   {nav}
